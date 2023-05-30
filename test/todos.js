@@ -55,7 +55,7 @@ describe("/Todos route", () => {
     expect(res.status).equals(204);
   });
   it("GET /todos for non existing user id (negative test)", async () => {
-    const url = `comments/${newTodoId}?access-token=${token}`;
+    const url = `todos/${newTodoId}?access-token=${token}`;
     const res = await request.get(url);
     expect(res.status).equals(404);
     expect(res.body.message).to.eq("Resource not found");
