@@ -23,6 +23,8 @@ describe("/comments route", () => {
     const url = `comments?access-token=${token}&name=Balavadivel`;
     const res = await request.get(url);
     //Loop over each item
+
+    console.log(url);
     res.body.forEach((comment) => {
       expect(comment.name).to.eq("Balavadivel");
     });
