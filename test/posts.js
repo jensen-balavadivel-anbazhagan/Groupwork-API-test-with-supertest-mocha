@@ -40,7 +40,7 @@ describe('/posts route', () => {
         const data = createRandomPost(userId);
         const res = await request
             .post("posts")
-            .set('Authorization', `Bearer 2a4fb0728d880d1cf439ab3fcbe106dd5b3155a2bf480dbe6c5a9158aac31513`)
+            .set('Authorization', `Bearer ${token}`)
             .send(data);
         expect(res.body).to.deep.include(data);
         expect(res.body).to.have.property('id');
