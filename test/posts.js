@@ -10,7 +10,7 @@ dotenv.config();
 
 // Setup
 const request = supertest("https://gorest.co.in/public/v2/");
-const token = process.env.USER_TOKEN;
+const token = process.env.BEARER_TOKEN;
 
 
 describe('/posts route', () => {

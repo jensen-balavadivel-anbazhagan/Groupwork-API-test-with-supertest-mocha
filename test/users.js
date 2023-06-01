@@ -9,7 +9,7 @@ dotenv.config();
 
 //Request
 const request = supertest("https://gorest.co.in/public/v2/");
-const token = process.env.USER_TOKEN;
+const token = process.env.BEARER_TOKEN;
 
 //Mocha test cases
 describe(" /users route", () => {
