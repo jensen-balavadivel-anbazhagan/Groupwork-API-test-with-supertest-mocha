@@ -27,11 +27,12 @@ describe("/Todos route", () => {
   after(async () => {
     await deleteTestUserData(createdUserId);
   });
+
   it("GET /todos", async () => {
     const res = await request.get("comments");
-    // console.log(res.body);
     expect(res.body).to.not.be.empty;
   });
+
   it("POST /todos", async () => {
     const data = createTodos(createdUserId);
     const res = await request
@@ -41,14 +42,15 @@ describe("/Todos route", () => {
     newTodoId = res.body.id;
     expect(res.body).to.deep.include(data);
   });
+
   it("GET /Todos | query parameters - get for todo", async () => {
     const url = `todos?access-token=${token}&user_id=${createdUserId}`;
     const res = await request.get(url);
-    //Loop over each item
     res.body.forEach((todos) => {
       expect(todos.user_id).to.eq(createdUserId);
     });
   });
+
   it("PUT /todos", async () => {
     const data = updateTodos(createdUserId);
     const url = `todos/${newTodoId}`;
@@ -56,17 +58,17 @@ describe("/Todos route", () => {
       .put(url)
       .set("Authorization", `Bearer ${token}`)
       .send(data);
-
     expect(res.body).to.deep.include(data);
   });
+
   it("DELETE /todos", async () => {
     const url = `todos/${newTodoId}`;
     const res = await request
       .delete(url)
       .set("Authorization", `Bearer ${token}`);
-
     expect(res.status).equals(204);
   });
+
   it("GET /todos for non existing todo id (negative test)", async () => {
     const url = `todos/${newTodoId}?access-token=${token}`;
     const res = await request.get(url);
