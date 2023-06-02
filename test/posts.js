@@ -12,12 +12,12 @@ dotenv.config();
 const request = supertest("https://gorest.co.in/public/v2/");
 const token = process.env.Bearer_Token;
 
-
+//Mocha Tests
 describe('/posts route', () => {
     
     let userId = null;
     let postId = null;
-    /* Creating a fresh user so we have one to work with */
+    
     it('create user', async () => {
         const data = createPostUser();
         const res = await request
@@ -28,7 +28,7 @@ describe('/posts route', () => {
 
     });
 
-    //Tests
+    
     it(`GET /posts`, async () => {
         const res = await request.get('posts')
         userId = res.body[0].user_id;
@@ -85,7 +85,5 @@ describe('/posts route', () => {
         .set('Authorization',  `Bearer ${token}` )
         .send(data);
         expect(res.body[0].message).to.eq("must exist");
-    });
-
-    
+    }); 
 });
