@@ -10,7 +10,7 @@ dotenv.config();
 
 // Setup
 const request = supertest("https://gorest.co.in/public/v2/");
-const token = process.env.BEARER_TOKEN;
+const token = process.env.Bearer_Token;
 
 
 describe('/posts route', () => {
@@ -87,11 +87,5 @@ describe('/posts route', () => {
         expect(res.body[0].message).to.eq("must exist");
     });
 
-    // /* Cleanup */
-    // after(async () => {
-    //     const res = await request
-    //         .delete(`users/${userId}`)
-    //         .set('Authorization', `Bearer ${token}`);
-    // });
-
+    
 });
