@@ -1,8 +1,8 @@
 import { randFullName, randEmail, randText } from "@ngneat/falso";
 
-export const createComment = () => {
+export const createComment = (postId) => {
   const data = {
-    post_id: 39960,
+    post_id: postId,
     name: randFullName({ gender: "male" }),
     email: randEmail({ provider: "jenseneducation", suffix: "se" }),
     body: randText(),
@@ -10,9 +10,9 @@ export const createComment = () => {
   return data;
 };
 
-export const updateComment = () => {
+export const updateComment = (postId) => {
   const data = {
-    post_id: 39960,
+    post_id: postId,
     name: randFullName({ gender: "male" }),
     email: randEmail({ provider: "jenseneducation", suffix: "se" }),
     body: randText(),
